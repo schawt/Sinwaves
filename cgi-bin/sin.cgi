@@ -21,18 +21,22 @@ import cStringIO
 
 def main():
     form = cgi.FieldStorage()
+    freq=1
+    amp=1
+    ps=0
     if 'frequency' in form:
-        plotAGG(float(form['frequency'].value))
-    else:
-        print 'Content-type: text/html'
-        print 
-        print '<html><body>Test %s </body></html>' % "None"
+        freq = float(form['frequency'].value)
+    if 'amplitude' in form:
+        amp = float(form['amplitude'].value)
+    if 'phaseshift' in form:
+        ps = float(form['phaseshift'].value)
+    plotAGG(frequency = freq, amplitude = amp, phaseshift = ps)
 
-def plotAGG(freq):
+def plotAGG(amplitude=1,frequency=1,phaseshift=0):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     x = np.linspace(-np.pi, np.pi, 201)
-    ax.plot(x, np.sin(x*freq))
+    ax.plot(x, amplitude*np.sin(x*frequency + phaseshift))
     ax.set_title('Sine Wave')
     ax.set_xlabel('Angle [rad]')
     ax.set_ylabel('sin(x)')
