@@ -1,0 +1,5 @@
+for cgi print output, there must be a blank line following the content-type header
+
+if number is not a key in the form use
+x = int(form.getvalue('number','0'))
+instead of if 'number' in form.keys():
