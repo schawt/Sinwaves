@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
 from http://stackoverflow.com/questions/5150591/is-it-possible-to-use-python-ajax-cgi-together
@@ -6,8 +7,8 @@ from http://stackoverflow.com/questions/5150591/is-it-possible-to-use-python-aja
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<script type="text/javascript">
-            function onSend( dest, params )
+        <script type="text/javascript">
+            function onTest( dest, params )
             {
                 var xmlhttp;
 
@@ -24,12 +25,7 @@ from http://stackoverflow.com/questions/5150591/is-it-possible-to-use-python-aja
                 {
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-	                var freq = document.getElementById('f');
-	                var amp = document.getElementById('amp');
-	                var ps = document.getElementById('ps');
-                        document.getElementById( "mpl_img" ).innerHTML = '<img width="400" height="300" src="/cgi-bin/sin.cgi?frequency=' + freq.value + '&amplitude=' + amp.value + '&phaseshift=' + ps.value + '" />';
-
-<!-- '<p>bleh</p>'; -->
+                        document.getElementById( "bb" ).innerHTML = xmlhttp.responseText;
                     }
                 }
 
@@ -42,26 +38,10 @@ from http://stackoverflow.com/questions/5150591/is-it-possible-to-use-python-aja
     </head>
 
     <body>
-      <div id="mpl_img">
-	<img src="/cgi-bin/sin.cgi" alt="some-text" width="400" height="300"/>
-      </div>
 
-	<form action="/cgi-bin/sin.cgi">
-	  Please enter a frequency:
-	  <input id="f" type=text name=frequency>
-	  <br />
-	  Please enter an amplitude:
-	  <input id="amp" type=text name=amplitude>
-	  <br />
-	  Please enter a phaseshift:
-	  <input id="ps" type=text name=phaseshift>
-	  <br />
-	  <button type="button" onclick="onSend('/cgi-bin/sin.cgi','')">Send AJAX</button>
-	  <input type=submit value="Send Standard">
-	</form>
+        <p id="bb"> abcdef </p>
+        <a href="javascript:onTest('/cgi-bin/stackoverflowex.cgi', '')">Click it</a>
 
     </body>
 
     </html>
-
-
