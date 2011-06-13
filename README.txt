@@ -9,3 +9,5 @@ http://loopback:8000/sin.cgi?frequency=_____ <- Your frequency
 to view the matplotlib plot
 
 Requires Agg backend for Matplotlib
+
+checkout http://matplotlib.sourceforge.net/users/screenshots.html#slider-demo
